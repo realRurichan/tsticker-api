@@ -22,6 +22,9 @@ async def get_sticker(filename):
     else:
         error = {"code": "400", "description": "Bad Request: invalid filename"}
         return json.dumps(error)
+    file_path = f"stickers/{filename}"
+    if os.path.exists(file_path):
+        return send_from_directory("stickers", filename)
     result = await bot.getSticker(file_id=file_id, filename=filename)
     if result == True:
         return send_from_directory("stickers", filename)
