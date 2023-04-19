@@ -14,7 +14,6 @@ bot = Bot(bot_token)
 @app.route("/stickers/<filename>")
 async def get_sticker(filename):
     await bot.initialize()
-    print(filename)
     pattern = r"^[^.]+\.(jpg|jpeg|png|webp)$"
     match = re.match(pattern, filename)
     if match:
