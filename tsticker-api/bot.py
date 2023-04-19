@@ -1,7 +1,5 @@
 import aiohttp
-import asyncio
 import urllib.parse
-from sys import exit as sysexit
 from PIL import Image
 import io
 
