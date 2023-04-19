@@ -58,6 +58,6 @@ class Bot:
             f"https://api.telegram.org/file/bot{self.token}/{res['file_path']}"
         )
         sticker = await self.downloadFile(sticker_link)
-        dictionary = f"stickers/{filename}"
-        self.convertImageFormat(sticker, dictionary)
+        directory = f"stickers/{filename}"
+        self.convertImageFormat(sticker, directory)
         return True
