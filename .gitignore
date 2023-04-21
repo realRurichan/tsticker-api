@@ -1,5 +1,5 @@
 .venv/
 .env
 .vscode/
-tsticker-api/__pycache__
-tsticker-api/stickers
+__pycache__/
+stickers/
