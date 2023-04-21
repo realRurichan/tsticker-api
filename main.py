@@ -1,16 +1,20 @@
 from flask import Flask, send_from_directory
 from bot import Bot
 from dotenv import load_dotenv
+from loguru import logger
 import json
 import re
 import os
 import asyncio
+from version import version
 
 app = Flask(__name__)
 load_dotenv()
 bot_token = os.getenv("TOKEN")
 cache_time = os.getenv("CACHE_TIME")
 bot = Bot(bot_token)
+
+logger.info(f"tsticker-api {version} is running")
 
 
 async def delete_files():
