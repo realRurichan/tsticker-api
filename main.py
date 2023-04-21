@@ -4,11 +4,23 @@ from dotenv import load_dotenv
 import json
 import re
 import os
+import asyncio
 
 app = Flask(__name__)
 load_dotenv()
 bot_token = os.getenv("TOKEN")
+cache_time = os.getenv("CACHE_TIME")
 bot = Bot(bot_token)
+
+
+async def delete_files():
+    while True:
+        await asyncio.sleep(cache_time)
+        for file in os.listdir("/stickers"):
+            file_path = os.path.join("/stickers", file)
+            if os.path.isfile(file_path):
+                os.remove(file_path)
+                print(f"Deleted file: {file_path}")
 
 
 @app.route("/stickers/<filename>")
